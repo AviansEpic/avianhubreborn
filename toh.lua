@@ -108,7 +108,11 @@ while wait() do
     if getgenv().autofarm then
         delay(2, function()
             pcall(function()
+            local old = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            wait(0.1)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").tower.sections.finish.FinishGlow.CFrame
+            wait(1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = old
             end)
         end)
     end
