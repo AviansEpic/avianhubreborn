@@ -9,6 +9,7 @@ getgenv().togglekey = Enum.KeyCode.RightShift
 getgenv().anticheatdisable = false
 getgenv().autofarm = false
 getgenv().godmode = false
+getgenv().walkspeed = 16 
 
 local gmt = getrawmetatable(game)
 setreadonly(gmt,false)
@@ -45,11 +46,7 @@ mainsec:addButton("TP to End", function()
 end)
 
 mainsec:addSlider("WalkSpeed", 16, 16, 300, function(v)
-    while wait() do
-        pcall(function()
-            game:GetService("ReplicatedStorage").globalSpeed.Value = v
-        end)
-    end
+    getgenv().walkspeed = v
 end)
 
 mainsec:addButton("Give All Tools", function()
@@ -94,6 +91,10 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 })
 
 while wait() do
+    pcall(function()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().walkspeed
+    end)
+    
     pcall(function()
     if not getgenv().godmode then
         game:GetService("Players").LocalPlayer.Character.ExplosiveDeath.Disabled = false
