@@ -21,7 +21,7 @@ local ccunlock = cctab:NewSection("Unlock Vehicles")
 
 main:NewTextBox("Kill", "Kills the selected player", function(txt)
     if getplayer(txt) then
-    game.ReplicatedStorage.RemoteEvents.C5ar:FireServer("PickingCar","SchoolBus")
+    game.ReplicatedStorage.RemoteEvents.C16a16r:FireServer("PickingCar","SchoolBus")
     wait(1)
     
     local char = game.Players.LocalPlayer.Character
@@ -54,7 +54,7 @@ end)
 
 main:NewTextBox("Bring", "Brings the selected player", function(txt)
     if getplayer(txt) then
-    game.ReplicatedStorage.RemoteEvents.C5ar:FireServer("PickingCar","SchoolBus")
+    game.ReplicatedStorage.RemoteEvents.C16a16r:FireServer("PickingCar","SchoolBus")
     wait(1)
     
     local char = game.Players.LocalPlayer.Character
@@ -96,105 +96,10 @@ main:NewButton("Unview", "Unviews (if viewing another player)", function()
     workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 end)
 
-cc:NewButton("AutoFarm Easy Candy Corn", "Autofarms the easy candy corn hunt", function()
-    fireclickdetector(game:GetService("Workspace")["EasterSign001!"].Model.Easy.ClickDetector)
-    local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    
-    wait(1)
-    
-    for i,v in pairs(game.Workspace["Easter001!"].HalloweenHuntEazy:GetChildren()) do
-        if v.Name == "Candy" then
-            repeat wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Middle.CFrame
-                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-            until v.Middle.EggTouched.Value
+main:NewButton("Unban from all houses", "Unban", function()
+    for i,v in pairs(workspace:GetDescendants()) do
+        if v.Name:find("Banned") then
+            v:Destroy()
         end
     end
-
-    wait(0.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 end)
-
-cc:NewButton("AutoFarm Medium Candy Corn", "Autofarms the medium candy corn hunt", function()
-    fireclickdetector(game:GetService("Workspace")["EasterSign001!"].Model.Medium.ClickDetector)
-    local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    
-    wait(1)
-    
-    for i,v in pairs(game.Workspace["Easter001!"].HalloweenHuntMedium:GetChildren()) do
-        if v.Name == "Candy" then
-            repeat wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Middle.CFrame
-                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-            until v.Middle.EggTouched.Value
-        end
-    end
-
-    wait(0.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-
-cc:NewButton("AutoFarm Hard Candy Corn", "Autofarms the hard candy corn hunt", function()
-    fireclickdetector(game:GetService("Workspace")["EasterSign001!"].Model.Hard.ClickDetector)
-    local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    
-    wait(1)
-    
-    for i,v in pairs(game.Workspace["Easter001!"].HalloweenHuntHard:GetChildren()) do
-        if v.Name == "Candy" then
-            repeat wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Middle.CFrame
-                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-            until v.Middle.EggTouched.Value
-        end
-    end
-
-    wait(0.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-
-cc:NewButton("AutoFarm Extreme Candy Corn", "Autofarms the extreme candy corn hunt", function()
-    fireclickdetector(game:GetService("Workspace")["EasterSign001!"].Model.Extreme.ClickDetector)
-    local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    
-    wait(1)
-    
-    for i,v in pairs(game.Workspace["Easter001!"].HalloweenHuntExtreme:GetChildren()) do
-        if v.Name == "Candy" then
-            repeat wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Middle.CFrame
-                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-            until v.Middle.EggTouched.Value
-        end
-    end
-
-    wait(0.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-
-cc:NewButton("AutoFarm Insane Candy Corn", "Autofarms the insane candy corn hunt", function()
-    fireclickdetector(game:GetService("Workspace")["EasterSign001!"].Model.Insane.ClickDetector)
-    local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    
-    wait(1)
-    
-    for i,v in pairs(game.Workspace["Easter001!"].HalloweenHuntInsane:GetChildren()) do
-        if v.Name == "Candy" then
-            repeat wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Middle.CFrame
-                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-            until v.Middle.EggTouched.Value
-        end
-    end
-
-    wait(0.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-
-local names = {"Easy","Medium","Hard","Extreme","Insane"}
-
-for i,v in pairs(names) do
-    ccunlock:NewButton(v,"Unlocks the "..v:lower().." vehicle", function()
-        game.ReplicatedStorage.RemoteEvents.H5alloweenRemote:FireServer("Unlock"..v)
-    end)
-end
