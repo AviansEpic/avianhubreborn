@@ -1,3 +1,4 @@
+local car_remote = game.ReplicatedStorage.blahblah --find this using a remotespy, they change the names a lot
 local function getplayer(s)
     s = s:lower() -- Remove this if you want case sensitivity
     for _, player in ipairs(game.Players:GetPlayers()) do
@@ -21,7 +22,7 @@ local ccunlock = cctab:NewSection("Unlock Vehicles")
 
 main:NewTextBox("Kill", "Kills the selected player", function(txt)
     if getplayer(txt) then
-    game.ReplicatedStorage.RemoteEvents.C16a16r:FireServer("PickingCar","SchoolBus")
+    car_remote:FireServer("PickingCar","SchoolBus")
     wait(1)
     
     local char = game.Players.LocalPlayer.Character
@@ -54,7 +55,7 @@ end)
 
 main:NewTextBox("Bring", "Brings the selected player", function(txt)
     if getplayer(txt) then
-    game.ReplicatedStorage.RemoteEvents.C16a16r:FireServer("PickingCar","SchoolBus")
+    car_remote:FireServer("PickingCar","SchoolBus")
     wait(1)
     
     local char = game.Players.LocalPlayer.Character
