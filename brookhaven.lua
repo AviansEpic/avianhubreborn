@@ -1,4 +1,4 @@
-local car_remote = game.ReplicatedStorage.blahblah --find this using a remotespy, they change the names a lot
+local car_remote = game.ReplicatedStorage.Z.ZZ.ZZZ.28Ca28r
 local function getplayer(s)
     s = s:lower() -- Remove this if you want case sensitivity
     for _, player in ipairs(game.Players:GetPlayers()) do
